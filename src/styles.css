@@ -70,6 +70,17 @@ html.lenis {
   text-shadow: 0 0.02491em 0.26156em rgba(255,227,194,.6);
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+canvas::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+canvas {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
 @media (min-width: 1024px){
   .split-text {
     font-size: 30px;
