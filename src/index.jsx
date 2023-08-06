@@ -6,7 +6,13 @@ import {
   } from "react-router-dom";
 import App from "./App";
 import "./styles.css";
+import studio from "@theatre/studio";
+import extension from "@theatre/r3f/dist/extension";
 
+
+
+studio.extend(extension);
+studio.initialize();
 const router = createBrowserRouter([
     {
       path: "/",

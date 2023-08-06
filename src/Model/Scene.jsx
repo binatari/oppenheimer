@@ -15,7 +15,6 @@ export function Model(props) {
   const { nodes, materials } = useGLTF('/scene-transformed.glb')
   return (
     <group {...props} dispose={null}>
-      
       <mesh geometry={nodes.Object_6.geometry} material={materials.PaletteMaterial001} scale={0.001} />
     </group>
   )

@@ -16,8 +16,11 @@
   "repository": "github:benjaminmiles/react-three-vite",
   "license": "MIT",
   "dependencies": {
-    "@react-three/drei": "9.79.3",
-    "@react-three/fiber": "8.13.5",
+    "@react-three/drei": "^9.56.20",
+    "@react-three/fiber": "^8.11.0",
+    "@theatre/core": "^0.6.0",
+    "@theatre/r3f": "^0.6.0",
+    "@theatre/studio": "^0.6.0",
     "@studio-freight/react-lenis": "^0.0.26",
     "framer-motion": "^10.12.22",
     "framer-motion-3d": "^10.12.22",
@@ -25,19 +28,19 @@
     "leva": "^0.9.35",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
-    "react": "18.2.0",
+    "react": "^18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.14.2",
     "sort-by": "^1.2.0",
     "splitting": "^1.0.6",
-    "three": "0.154.0"
+    "three": "^0.155.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^4.0.3",
+    "@vitejs/plugin-react": "^3.1.0",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.27",
     "tailwindcss": "^3.3.3",
-    "vite": "^4.4.4"
+    "vite": "^4.1.0"
   },
   "scripts": {
     "dev": "vite --host",
