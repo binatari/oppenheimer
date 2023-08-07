@@ -108,8 +108,8 @@ body {
 } */
 
 
-canvas {
-  /* z-index: 8388635 !important; */
-  /* position: absolute !important; */
+/* canvas {
+  z-index: 8388635 !important;
+  position: absolute !important;
   pointer-events: none !important;
-}
+} */

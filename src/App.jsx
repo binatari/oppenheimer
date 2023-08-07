@@ -1,6 +1,13 @@
 import React, { Suspense, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Box, OrbitControls, Scroll, ScrollControls, useScroll } from "@react-three/drei";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+  Vignette,
+  Noise,
+} from '@react-three/postprocessing';
 import { Model } from "./Model/Scene";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import Hero from "./Section/Hero";
@@ -10,31 +17,39 @@ import Loader from "./Loader";
 import { getProject, val } from "@theatre/core";
 import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f";
 
-import flyThroughState from './fly.json'
+import flyThroughState from "./fly.json";
 
 const App = () => {
-  const sheet = getProject("Fly Through 4", {state:flyThroughState}).sheet("Scene");
-
+  const sheet = getProject("Fly Through 4", { state: flyThroughState }).sheet("Scene");
+  const lenisRef = useRef();
   return (
-    <ReactLenis root>
-      <Overlay />
-      <Hero />
-      <VideoBg />
-      <Canvas gl={{ preserveDrawingBuffer: true }} id='town' className='min-h-screen h-[100vh!important] w-full cursor-pointer z-[9999]'>
-        <ScrollControls pages={7} damping={0.01} >
-          <SheetProvider sheet={sheet}>
-            <Scroll>
+    <>
+      <ReactLenis root >
+        <Overlay />
+        <Hero />
+        <VideoBg />
+      </ReactLenis>
+
+
+      <Canvas
+        gl={{ preserveDrawingBuffer: true }}
+        id='town'
+        className=' h-[100vh!important] z-[100000] w-full cursor-pointer fixed inset-0'
+      >
+         
+        <ScrollControls pages={7} damping={0.01} className='ggg'>
+          <SheetProvider sheet={sheet} className='ggg'>
             <Scene />
-            </Scroll>
-           
+            <EffectComposer>
+
+          <Noise opacity={0.05} />
+        
+        </EffectComposer>
           </SheetProvider>
         </ScrollControls>
       </Canvas>
-      {/* <Canvas camera={{ fov: 70, position: [0, 0, 3] }}>
-      <OrbitControls />
-      <Scene />
-    </Canvas> */}
-    </ReactLenis>
+    
+    </>
   );
 };
 
@@ -50,14 +65,14 @@ function Scene() {
     sheet.sequence.position = scroll.offset * sequenceLength;
   });
 
-  const bgColor = "black";
+  const bgColor = "grey";
 
   return (
     <>
       {/* <color attach="background" args={[bgColor]} /> */}
-      {/* <fog attach="fog" color={bgColor} near={-4} far={10} /> */}
-      <ambientLight intensity={1} />
-      <directionalLight position={[-5, 5, -5]} intensity={1.5} />
+      {/* <fog attach="fog" color="#FFBF00" near={1} far={40} /> */}
+      <ambientLight intensity={0.3} />
+      {/* <directionalLight position={[-5, 5, -5]} intensity={1.5} /> */}
       <Model />
       <PerspectiveCamera theatreKey='Camera' makeDefault position={[0, 0, 10]} fov={90} near={0.1} far={70} />
     </>
