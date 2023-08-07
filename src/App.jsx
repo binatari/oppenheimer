@@ -23,7 +23,10 @@ const App = () => {
       <Canvas gl={{ preserveDrawingBuffer: true }} id='town' className='min-h-screen h-[100vh!important] w-full cursor-pointer z-[9999]'>
         <ScrollControls pages={7} damping={0.01} >
           <SheetProvider sheet={sheet}>
+            <Scroll>
             <Scene />
+            </Scroll>
+           
           </SheetProvider>
         </ScrollControls>
       </Canvas>
