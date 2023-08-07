@@ -1,14 +1,14 @@
-import { Html, useProgress } from "@react-three/drei";
+
 import React from "react";
 
 const Loader = () => {
-  const { progress } = useProgress();
   return (
-    <Html center>
-      <div className="h-full w-full bg-[#fbcb9f]">
-        <p className='text-white '>{progress} % Loader</p>
+    <div>
+      <div className=' w-full bg-black h-screen flex flex-col justify-center text-center items-center'>
+        <img src='/boom.gif' />
+        <p className=' text-[30px] font-medium text-[#df5722]'>Loading</p>
       </div>
-    </Html>
+    </div>
   );
 };
 

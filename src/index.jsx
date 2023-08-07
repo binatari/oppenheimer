@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./styles.css";
+import Loader from "./Loader";
 // import studio from "@theatre/studio";
 // import extension from "@theatre/r3f/dist/extension";
 
@@ -16,7 +17,7 @@ const router = createBrowserRouter([
 ]);
 const root = createRoot(document.getElementById("root"));
 root.render(
-  <Suspense fallback={null}>
+  <Suspense fallback={<Loader/>}>
     <RouterProvider router={router} />
   </Suspense>
 );

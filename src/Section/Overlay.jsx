@@ -12,11 +12,12 @@ const Overlay = () => {
 
       <div className='w-full flex flex-col items-center pt-[30px] px-6 z-[1000] relative'>
         <motion.img
-          animate={hash && { height: "0", opacity: 0, transition: { duration: 2 } }}
+          initial={{height:'auto' }}
+          animate={hash ? { height: "0", opacity: 0, transition: { duration: 2 }} : {height:'auto', opacity:1 }}
           src='/christopher-nolan.png'
           className='mb-8'
         />
-        <motion.img animate={hash && { height: "2rem", transition: { duration: 2 } }} src='/oppenheimer-orange.png' />
+        <motion.img  initial={{height:'auto' }} animate={hash ? { height: "2rem", transition: { duration: 2 } } : { height: "auto" }} src='/oppenheimer-orange.png' />
       </div>
     </div>
   );
