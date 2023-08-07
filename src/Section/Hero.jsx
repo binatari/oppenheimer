@@ -1,15 +1,21 @@
 import { useLenis } from "@studio-freight/react-lenis";
+import { motion } from "framer-motion";
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
+
+
+const variants = {
+  visible: { scale:'130%', transition: { duration: 5} },
+  hidden: { scale: '100%', },
+}
 const Hero = () => {
   const lenis = useLenis();
-
   return (
     <div className='min-h-screen relative overflow-hidden' data-lenis-prevent>
-      <img src='/header-back.jpg' className='top-0 left-0 w-full absolute h-full object-cover pointer-events-none scale-[130%]' />
-      <div className='bottom-0 w-full flex flex-wrap justify-center gap-4 absolute left-0 scale-[150%] items-end'>
-        <img src='/oppenheimer.png' className='h-full max-h-[62rem]' />
+      <motion.img src='/header-back.jpg' initial="hidden" animate='visible' variants={variants} className='top-0 left-0 w-full absolute h-full object-cover pointer-events-none scale-[130%]' />
+      <div className='md:bottom-0 bottom-[250px] w-full flex flex-wrap justify-center gap-4 absolute left-0 scale-[150%] items-end'>
+        <img src='/oppenheimer.png' className='h-full max-h-[62rem] object-contain scale-[3] sm:scale-[90%] md:scale-[110%] w-auto' />
       </div>
       <div className='bottom-0 w-full flex flex-wrap justify-center gap-4 absolute left-0 pb-[200px] scale-[110%] z-50'>
         <a

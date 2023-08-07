@@ -16,7 +16,7 @@ const Overlay = () => {
           src='/christopher-nolan.png'
           className='mb-8'
         />
-        <motion.img animate={hash && { height: "1rem", transition: { duration: 2 } }} src='/oppenheimer-orange.png' />
+        <motion.img animate={hash && { height: "2rem", transition: { duration: 2 } }} src='/oppenheimer-orange.png' />
       </div>
     </div>
   );

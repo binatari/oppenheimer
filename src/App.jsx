@@ -1,5 +1,6 @@
 import React, { Suspense, useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import * as THREE from 'three'
+import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Box, OrbitControls, Scroll, ScrollControls, useScroll } from "@react-three/drei";
 import {
   EffectComposer,
@@ -18,6 +19,12 @@ import { getProject, val } from "@theatre/core";
 import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f";
 
 import flyThroughState from "./fly.json";
+
+function Rig() {
+  const { camera, mouse } = useThree()
+  const vec = new THREE.Vector3()
+  return useFrame(() => camera.position.lerp(vec.set(mouse.x * 5, mouse.y * 0.1, camera.position.z), 0.02))
+}
 
 const App = () => {
   const sheet = getProject("Fly Through 4", { state: flyThroughState }).sheet("Scene");
@@ -45,8 +52,10 @@ const App = () => {
           <Noise opacity={0.05} />
         
         </EffectComposer>
+        {/* <Rig /> */}
           </SheetProvider>
         </ScrollControls>
+
       </Canvas>
     
     </>
@@ -56,7 +65,6 @@ const App = () => {
 function Scene() {
   const sheet = useCurrentSheet();
   const scroll = useScroll();
-
   // our callback will run on every animation frame
   useFrame(() => {
     // the length of our sequence
