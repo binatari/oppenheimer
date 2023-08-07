@@ -3,11 +3,11 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./styles.css";
-import studio from "@theatre/studio";
-import extension from "@theatre/r3f/dist/extension";
+// import studio from "@theatre/studio";
+// import extension from "@theatre/r3f/dist/extension";
 
-studio.extend(extension);
-studio.initialize();
+// studio.extend(extension);
+// studio.initialize();
 const router = createBrowserRouter([
   {
     path: "/",

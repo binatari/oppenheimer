@@ -7,30 +7,24 @@ import Hero from "./Section/Hero";
 import VideoBg from "./Section/VideoBg";
 import Overlay from "./Section/Overlay";
 import Loader from "./Loader";
-import { getProject, val } from '@theatre/core'
-import {
-  SheetProvider,
-  PerspectiveCamera,
-  useCurrentSheet,
-} from "@theatre/r3f";
+import { getProject, val } from "@theatre/core";
+import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f";
 
-
+import flyThroughState from './fly.json'
 
 const App = () => {
-  const sheet = getProject("Fly Through 4").sheet("Scene");
-  
+  const sheet = getProject("Fly Through 4", {state:flyThroughState}).sheet("Scene");
+
   return (
     <ReactLenis root>
       <Overlay />
       <Hero />
       <VideoBg />
-      <Canvas gl={{ preserveDrawingBuffer: true }} id='town' className="min-h-screen h-[100vh!important] w-full">
-        <ScrollControls pages={3} damping={0.01}>
-      
-            <SheetProvider sheet={sheet}>
+      <Canvas gl={{ preserveDrawingBuffer: true }} id='town' className='min-h-screen h-[100vh!important] w-full cursor-pointer z-[9999]'>
+        <ScrollControls pages={7} damping={0.01} >
+          <SheetProvider sheet={sheet}>
             <Scene />
-            </SheetProvider>
-        
+          </SheetProvider>
         </ScrollControls>
       </Canvas>
       {/* <Canvas camera={{ fov: 70, position: [0, 0, 3] }}>
@@ -40,7 +34,6 @@ const App = () => {
     </ReactLenis>
   );
 };
-
 
 function Scene() {
   const sheet = useCurrentSheet();
@@ -62,15 +55,8 @@ function Scene() {
       {/* <fog attach="fog" color={bgColor} near={-4} far={10} /> */}
       <ambientLight intensity={1} />
       <directionalLight position={[-5, 5, -5]} intensity={1.5} />
-      {/* <Model /> */}
-      <PerspectiveCamera
-        theatreKey="Camera"
-        makeDefault
-        position={[0, 0, 0]}
-        fov={90}
-        near={0.1}
-        far={70}
-      />
+      <Model />
+      <PerspectiveCamera theatreKey='Camera' makeDefault position={[0, 0, 10]} fov={90} near={0.1} far={70} />
     </>
   );
 }
