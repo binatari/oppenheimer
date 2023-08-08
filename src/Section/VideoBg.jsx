@@ -108,7 +108,7 @@ const VideoBg = () => {
 
   return (
     <div ref={scope} className='min-h-screen w-full bg-black relative' id='intro' data-lenis-prevent>
-      <div ref={textRef} className='w-full absolute top-[30%] flex gap-4 flex-col items-center fader'>
+      <div ref={textRef} className='w-full absolute top-[30%] flex flex-wrap gap-4 flex-col items-center fader'>
         <div>
           <span className='uppercase split-text blur-[40px] opacity-0'>prometheus</span>
         </div>
@@ -122,15 +122,15 @@ const VideoBg = () => {
           <span className='uppercase split-text blur-[40px] opacity-0'>gods</span>
         </div>
       </div>
-      <div className='w-full absolute top-[30%] flex gap-4 flex-col items-center fader'>
+      <div className='w-full absolute top-[30%] flex-wrap flex gap-4 flex-col items-center fader'>
         <ul className='flex gap-10'>
-          <li className='uppercase split-text blur-[40px] opacity-0'>for</li>
-          <li className='uppercase split-text blur-[40px] opacity-0'>giving</li>
+          <li className='uppercase split-text blur-[40px] list-none opacity-0'>for</li>
+          <li className='uppercase split-text blur-[40px] list-none opacity-0'>giving</li>
         </ul>
         <div className='flex gap-10'>
-          <li className='uppercase split-text blur-[40px] opacity-0'>fire</li>
-          <li className='uppercase split-text blur-[40px] opacity-0'>to</li>
-          <li className='uppercase split-text blur-[40px] opacity-0'>man</li>
+          <li className='uppercase split-text blur-[40px] list-none opacity-0'>fire</li>
+          <li className='uppercase split-text blur-[40px] list-none opacity-0'>to</li>
+          <li className='uppercase split-text blur-[40px] list-none opacity-0'>man</li>
         </div>
       </div>
       <video
