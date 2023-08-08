@@ -30,7 +30,7 @@ const App = () => {
         <Hero />
         <VideoBg />
       </ReactLenis>
-
+      <div data-lenis-prevent>
       <Canvas gl={{ preserveDrawingBuffer: true }} id='town' className=' h-[100vh!important] w-full fixed inset-0'>
         <ScrollControls pages={7} damping={0.01} className='ggg'>
           <SheetProvider sheet={sheet} className='ggg'>
@@ -42,6 +42,8 @@ const App = () => {
           </SheetProvider>
         </ScrollControls>
       </Canvas>
+      </div>
+  
     </>
   );
 };
