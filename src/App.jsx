@@ -1,14 +1,8 @@
 import React, { Suspense, useRef } from "react";
-import * as THREE from 'three'
+import * as THREE from "three";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Box, OrbitControls, Scroll, ScrollControls, useScroll } from "@react-three/drei";
-import {
-  EffectComposer,
-  DepthOfField,
-  Bloom,
-  Vignette,
-  Noise,
-} from '@react-three/postprocessing';
+import { EffectComposer, DepthOfField, Bloom, Vignette, Noise } from "@react-three/postprocessing";
 import { Model } from "./Model/Scene";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import Hero from "./Section/Hero";
@@ -21,9 +15,9 @@ import { SheetProvider, PerspectiveCamera, useCurrentSheet } from "@theatre/r3f"
 import flyThroughState from "./fly.json";
 
 function Rig() {
-  const { camera, mouse } = useThree()
-  const vec = new THREE.Vector3()
-  return useFrame(() => camera.position.lerp(vec.set(mouse.x * 5, mouse.y * 0.1, camera.position.z), 0.02))
+  const { camera, mouse } = useThree();
+  const vec = new THREE.Vector3();
+  return useFrame(() => camera.position.lerp(vec.set(mouse.x * 5, mouse.y * 0.1, camera.position.z), 0.02));
 }
 
 const App = () => {
@@ -31,33 +25,23 @@ const App = () => {
   const lenisRef = useRef();
   return (
     <>
-      <ReactLenis root >
+      <ReactLenis root>
         <Overlay />
         <Hero />
         <VideoBg />
       </ReactLenis>
 
-
-      <Canvas
-        gl={{ preserveDrawingBuffer: true }}
-        id='town'
-        className=' h-[100vh!important] z-[100000] w-full cursor-pointer fixed inset-0'
-      >
-         
+      <Canvas gl={{ preserveDrawingBuffer: true }} id='town' className=' h-[100vh!important] w-full fixed inset-0'>
         <ScrollControls pages={7} damping={0.01} className='ggg'>
           <SheetProvider sheet={sheet} className='ggg'>
             <Scene />
             <EffectComposer>
-
-          <Noise opacity={0.05} />
-        
-        </EffectComposer>
-        {/* <Rig /> */}
+              <Noise opacity={0.05} />
+            </EffectComposer>
+            {/* <Rig /> */}
           </SheetProvider>
         </ScrollControls>
-
       </Canvas>
-    
     </>
   );
 };

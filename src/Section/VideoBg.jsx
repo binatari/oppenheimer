@@ -1,7 +1,7 @@
 
 import { motion, useAnimate, stagger, useInView, usePresence } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useIsInViewport from "../hooks/useIntersecting";
 import { useLenis } from "@studio-freight/react-lenis";
 
@@ -33,6 +33,8 @@ const VideoBg = () => {
 
 
   const textIsOnScreen = useIsInViewport(textRef)
+
+  const navigate = useNavigate()
 
 
 //manages transition in and out animations
@@ -99,8 +101,9 @@ const VideoBg = () => {
         lenis.scrollTo('#town', {
           duration:3,  
           easing:(t)=>(t==1 ? 1 : 1 - Math.pow(2, -10 * t)),
-      
       })
+
+      setTimeout(()=>navigate('/#town'), 1000)
       });
     }
   }, [secondAnim]);
